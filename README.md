@@ -124,7 +124,7 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
   </p>
 </details>
 
-* Since `/houses/:houseId/members/:memberId` has two route parameters, you will have access to them as `props.match.params.houseId` and `props.match.params.memberId`
+* Since `/houses/:houseId/members/:memberId` has two route parameters, you will have access to get them both from `useParams()`
 
 <details>
 
