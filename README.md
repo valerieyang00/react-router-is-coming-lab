@@ -128,7 +128,7 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
 
 <details>
 
-  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId`?</summary>
+  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId` ?</summary>
 
   <p>
 
