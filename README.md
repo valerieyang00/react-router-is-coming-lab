@@ -100,26 +100,25 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
 
 ## Hints 
 
-* use the array `.find()` method to when rendering compound routes you can use the `props.match.params` to match data ids with route parameters. 
+* use the array `.find()` method to when rendering compound routes you can use the `useParams()` hook to match data ids with route parameters. 
 
 <details>
 
-  <summary> Stuck on how to render your /houses/:id route in App.js?</summary>
+  <summary> Stuck on how to render your /houses/:id?</summary>
 
   <p>
 
   ```jsx
+    // in App
     <Route 
         exact path="/houses/:id" 
-        render={(props) => {
-            // compare the url params with the data id to find the data
-            const house = gameOfThrones.find(house => house.id.toString() === props.match.params.id)
-            // spread the data into the props
-            props = {...props, ...house}
-            // render component with new props
-            return <House {...props}/>
-        }} 
+        element={<House />} 
     />
+    // in House 
+    ...
+    const { id } = useParams()
+    const house = houses.find(house => house.id.toString() === id)
+   ...
   ```
 
   </p>
@@ -129,25 +128,22 @@ Once you have completed this, move onto `House.js` and `Member.js`. Each of thes
 
 <details>
 
-  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId` route in App.js?</summary>
+  <summary> Stuck on how to render your `/houses/:houseId/members/:memberId`?</summary>
 
   <p>
 
   ```jsx
+        // in App
         <Route 
           path="/houses/:houseId/member/:memberId" 
-          render={(props) => {
-            
-            // first find the right house from the url params
-            const member = gameOfThrones
-                .find(house => house.id.toString() === props.match.params.houseId)
-                    // then find the right person in that house
-                    .people
-                        .find(person => person.id.toString() === props.match.params.memberId)
-            props = {...props, ...member}
-            return <Member {...props} />
-          }}
+          element={<Member />}
         />
+        // in Member
+        ...
+          const { houseId, memberId } = useParams()
+          const house = houses.find(house => house.id.toString() === houseId)
+          const member = house.people.find(person => person.id.toString() === memberId)
+        ...
   ```
 
   </p>
