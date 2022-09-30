@@ -17,6 +17,9 @@ export default function Member (props) {
         <div className="desc">
             {member.description}
         </div>
+        <div className="wikiSuffix">
+            <a target='_blank' href={`https://awoiaf.westeros.org/index.php/${member.wikiSuffix}`}>More details...</a>
+        </div>
     </div>
     )
 }
